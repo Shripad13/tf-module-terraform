@@ -51,8 +51,17 @@ resource "null_resource" "app" {
     always_run = true
   }
 
-  provisioner "local-exec" {
-    command = "sleep 60; cd /home/ec2-user/Ansible ; ansible-playbook -i inv-${var.env} -e ansible_user=ec2-user -e ansible_password=DevOps321 -e COMPONENT=${var.name} -e ENV=${var.env} expense.yml"
+
+ # provisioner "local-exec" {
+  #  command = "sleep 60; cd /home/ec2-user/Ansible ; ansible-playbook -i inv-${var.env} -e ansible_user=ec2-user -e ansible_password=DevOps321 -e COMPONENT=${var.name} -e ENV=${var.env} expense.yml"
+  #}
+
+  provisioner "remote-exec" {
+    inline = [
+      "sleep 60",
+      "pip3.11 install hvac",       # Python library to interact with Hashicorp Vault
+      "ansible-pull -U https://github.com/Shripad13/Ansible.git  -e COMPONENT=${var.name} -e ENV=${var.env} expense.yml"
+    ]
   }
 
 }
