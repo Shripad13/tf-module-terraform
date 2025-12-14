@@ -1,10 +1,10 @@
 data "aws_route53_zone" "main" {
-    name         = "devsecopswithshri.site"
-    private_zone = false
+  name         = "devsecopswithshri.site"
+  private_zone = false
 }
 
 data "aws_ami" "main" {
   most_recent = true
-  name_regex = "DevOps-LabImage-RHEL9"
-  owners      = ["355449129696"] 
-  }
+  name_regex  = "DevOps-LabImage-RHEL9"
+  owners      = ["355449129696"]
+}

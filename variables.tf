@@ -1,5 +1,9 @@
-variable "instance_type" {}
-variable "name" {}
+variable "ssh_pwd" {}
+variable "vault_token" {}
 variable "env" {}
-variable "port_no" {}
-variable "pwd" {}
+variable "vpc" {}
+variable "tags" {}
+
+variable "eks" {}
+variable "rds" {}
+variable "db_subnet_ids" {}
