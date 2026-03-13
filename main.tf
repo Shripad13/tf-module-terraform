@@ -60,7 +60,7 @@ resource "null_resource" "app" {
     inline = [
       "sleep 60",
       "pip3.11 install hvac", # Python library to interact with Hashicorp Vault
-      "ansible-pull -U https://github.com/Shripad13/Ansible.git  -e COMPONENT=${var.name} -e ENV=${var.env} expense.yml"
+      "ansible-pull -U https://github.com/Shripad13/Ansible.git -e vault_token=${var.vault_token} -e COMPONENT=${var.name} -e ENV=${var.env} expense-pull.yml"
     ]
   }
 
